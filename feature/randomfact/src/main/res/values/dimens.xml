@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="feature_randomfact_card_corner_radius">16dp</dimen>
+    <dimen name="feature_randomfact_card_elevation">4dp</dimen>
+    <dimen name="feature_randomfact_info_card_corner_radius">8dp</dimen>
+    <dimen name="feature_randomfact_info_card_elevation">2dp</dimen>
+    <dimen name="feature_randomfact_info_card_width_single">300dp</dimen>
+    <dimen name="feature_randomfact_info_card_width_double">150dp</dimen>
+    <dimen name="feature_randomfact_button_corner_radius">8dp</dimen>
+</resources>
