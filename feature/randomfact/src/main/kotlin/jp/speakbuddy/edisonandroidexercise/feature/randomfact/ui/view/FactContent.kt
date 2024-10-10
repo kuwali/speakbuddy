@@ -24,6 +24,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.EdisonAndroidExerciseTheme
 import jp.speakbuddy.edisonandroidexercise.feature.randomfact.R
 import jp.speakbuddy.edisonandroidexercise.feature.randomfact.ui.UiState
@@ -43,7 +44,7 @@ internal fun FactContent(uiState: UiState, onToggleFavorite: () -> Unit) {
             modifier =
             Modifier.padding(
                 dimensionResource(
-                    jp.speakbuddy.edisonandroidexercise.core.designsystem.R.dimen.core_designsystem_padding_default
+                    DesignR.dimen.core_designsystem_padding_default
                 )
             ),
             contentAlignment = Alignment.Center
@@ -65,7 +66,7 @@ internal fun FactContent(uiState: UiState, onToggleFavorite: () -> Unit) {
                             modifier =
                             Modifier.height(
                                 dimensionResource(
-                                    jp.speakbuddy.edisonandroidexercise.core.designsystem.R.dimen.core_designsystem_padding_small
+                                    DesignR.dimen.core_designsystem_padding_small
                                 )
                             )
                         )
@@ -137,7 +138,7 @@ fun FactContentSuccessFavoritePreview() {
         FactContent(
             uiState =
             UiState.Success(
-                fact = "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible.",
+                fact = "Honey never spoils. Archaeologists have found pots of honey in ancient",
                 factLength = 43,
                 isFavorite = true,
                 containsMultipleCats = false

@@ -102,8 +102,9 @@ constructor(
                     updateUiState()
                 }
             } catch (e: Throwable) {
+                val state = if (forceRefresh) "update" else "load initial"
                 _uiState.value =
-                    UiState.Error("Failed to ${if (forceRefresh) "update" else "load initial"} fact. Error: ${e.message}")
+                    UiState.Error("Failed to $state fact. Error: ${e.message}")
             }
         }
     }
