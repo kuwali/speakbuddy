@@ -1,0 +1,10 @@
+<resources>
+    <!--  Fact  -->
+    <string name="feature_randomfact_loading">Loading…</string>
+    <string name="feature_randomfact_characters_suffix">%d characters</string>
+    <string name="feature_randomfact_multiple_cats">Multiple Cats!</string>
+    <string name="feature_randomfact_error_prefix">Error: %1$s</string>
+    <string name="feature_randomfact_get_new_fact">Get New Fact</string>
+    <string name="feature_randomfact_remove_from_favorites">Remove from favorites</string>
+    <string name="feature_randomfact_add_to_favorites">Add to favorites</string>
+</resources>
