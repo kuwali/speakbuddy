@@ -13,9 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.EdisonAndroidExerciseTheme
 import jp.speakbuddy.edisonandroidexercise.feature.favoritefact.R
-import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 
 @Composable
 internal fun EmptyFavoritesList() {
@@ -28,7 +28,11 @@ internal fun EmptyFavoritesList() {
             text = stringResource(R.string.feature_favoritefact_no_favorites),
             style = MaterialTheme.typography.headlineMedium
         )
-        Spacer(modifier = Modifier.height(dimensionResource(DesignR.dimen.core_designsystem_padding_small)))
+        Spacer(
+            modifier = Modifier.height(
+                dimensionResource(DesignR.dimen.core_designsystem_padding_small)
+            )
+        )
         Text(
             text = stringResource(R.string.feature_favoritefact_add_favorites_prompt),
             style = MaterialTheme.typography.bodyMedium,

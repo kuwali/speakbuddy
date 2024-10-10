@@ -9,7 +9,6 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
 class ToggleFavoriteUseCaseTest {
-
     private val repository: FactRepository = mock()
     private lateinit var useCase: ToggleFavoriteUseCase
 

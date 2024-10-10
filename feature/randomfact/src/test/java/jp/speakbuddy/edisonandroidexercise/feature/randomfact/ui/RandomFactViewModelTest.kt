@@ -8,9 +8,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
-import org.junit.jupiter.api.BeforeEach
 import org.junit.Rule
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.ArgumentMatchers.anyBoolean
@@ -24,7 +24,6 @@ import org.mockito.junit.jupiter.MockitoExtension
 @OptIn(ExperimentalCoroutinesApi::class)
 @ExtendWith(MockitoExtension::class)
 class RandomFactViewModelTest {
-
     @get:Rule
     val dispatcherRule = MainDispatcherRule()
 
@@ -36,11 +35,12 @@ class RandomFactViewModelTest {
 
     @BeforeEach
     fun setup() {
-        viewModel = RandomFactViewModel(
-            getFactUseCase = getFactUseCase,
-            toggleFavoriteUseCase = toggleFavoriteUseCase,
-            dispatcher = testDispatcher,
-        )
+        viewModel =
+            RandomFactViewModel(
+                getFactUseCase = getFactUseCase,
+                toggleFavoriteUseCase = toggleFavoriteUseCase,
+                dispatcher = testDispatcher
+            )
     }
 
     @Test

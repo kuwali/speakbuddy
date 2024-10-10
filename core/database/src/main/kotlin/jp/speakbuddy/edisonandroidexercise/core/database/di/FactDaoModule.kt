@@ -10,10 +10,6 @@ import jp.speakbuddy.edisonandroidexercise.core.database.dao.FactDao
 @Module
 @InstallIn(SingletonComponent::class)
 internal object FactDaoModule {
-
     @Provides
-    fun providesFactDao(
-        database: FactDatabase,
-    ): FactDao = database.factDao()
-
+    fun providesFactDao(database: FactDatabase): FactDao = database.factDao()
 }

@@ -24,31 +24,33 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.EdisonAndroidExerciseTheme
 import jp.speakbuddy.edisonandroidexercise.core.model.Fact
 import jp.speakbuddy.edisonandroidexercise.feature.favoritefact.R
-import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 
 private const val MAX_LINES_FACT_TEXT = 2
 
 @Composable
-internal fun FavoriteFactCard(
-    fact: Fact,
-    onUnfavorite: () -> Unit
-) {
+internal fun FavoriteFactCard(fact: Fact, onUnfavorite: () -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = dimensionResource(R.dimen.feature_favoritefact_spacing_extra_small))
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = dimensionResource(R.dimen.feature_favoritefact_spacing_extra_small)
+        )
     ) {
         Row(
-            modifier = Modifier
+            modifier =
+            Modifier
                 .fillMaxWidth()
                 .padding(dimensionResource(DesignR.dimen.core_designsystem_padding_default)),
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(
                 onClick = onUnfavorite,
-                modifier = Modifier.size(dimensionResource(R.dimen.feature_favoritefact_icon_size_medium))
+                modifier = Modifier.size(
+                    dimensionResource(R.dimen.feature_favoritefact_icon_size_medium)
+                )
             ) {
                 Icon(
                     imageVector = Icons.Default.Favorite,
@@ -56,7 +58,11 @@ internal fun FavoriteFactCard(
                     tint = Color.Red
                 )
             }
-            Spacer(modifier = Modifier.width(dimensionResource(DesignR.dimen.core_designsystem_padding_default)))
+            Spacer(
+                modifier = Modifier.width(
+                    dimensionResource(DesignR.dimen.core_designsystem_padding_default)
+                )
+            )
             Column {
                 Text(
                     text = fact.fact,
@@ -64,7 +70,11 @@ internal fun FavoriteFactCard(
                     maxLines = MAX_LINES_FACT_TEXT,
                     overflow = TextOverflow.Ellipsis
                 )
-                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.feature_favoritefact_spacing_extra_small)))
+                Spacer(
+                    modifier = Modifier.height(
+                        dimensionResource(R.dimen.feature_favoritefact_spacing_extra_small)
+                    )
+                )
                 Text(
                     text = stringResource(R.string.feature_favoritefact_length_prefix, fact.length),
                     style = MaterialTheme.typography.bodyMedium,
@@ -80,8 +90,9 @@ internal fun FavoriteFactCard(
 fun FavoriteFactCardPreview() {
     EdisonAndroidExerciseTheme {
         FavoriteFactCard(
-            fact = Fact(
-                fact = "The platypus, a semiaquatic egg-laying mammal, doesn't have a stomach. Instead, its esophagus connects directly to its intestines!",
+            fact =
+            Fact(
+                fact = "The platypus, a semiaquatic egg-laying mammal, doesn't have a stomach. ",
                 length = 134,
                 isFavorite = true
             ),

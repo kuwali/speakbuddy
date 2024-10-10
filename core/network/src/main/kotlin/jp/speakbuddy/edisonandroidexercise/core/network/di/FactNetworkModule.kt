@@ -6,6 +6,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 import jp.speakbuddy.edisonandroidexercise.core.network.BuildConfig
 import jp.speakbuddy.edisonandroidexercise.core.network.FactNetworkDataSource
 import jp.speakbuddy.edisonandroidexercise.core.network.retrofit.FactApi
@@ -14,22 +16,20 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class FactNetworkModule {
-
     companion object {
         @Provides
         @Singleton
         fun provideFactApi(): FactApi {
-            val okHttpClient = OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
-                .build()
+            val okHttpClient =
+                OkHttpClient.Builder()
+                    .connectTimeout(30, TimeUnit.SECONDS)
+                    .readTimeout(30, TimeUnit.SECONDS)
+                    .writeTimeout(30, TimeUnit.SECONDS)
+                    .build()
 
             return Retrofit.Builder()
                 .baseUrl(BuildConfig.API_URL)
@@ -45,5 +45,4 @@ abstract class FactNetworkModule {
     abstract fun bindFactNetworkDataSource(
         factRemoteDataSource: FactRemoteDataSource
     ): FactNetworkDataSource
-
 }

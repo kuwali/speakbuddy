@@ -20,6 +20,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.EdisonAndroidExerciseTheme
 import jp.speakbuddy.edisonandroidexercise.feature.randomfact.R
 import jp.speakbuddy.edisonandroidexercise.feature.randomfact.ui.UiState
@@ -48,17 +49,26 @@ internal fun FactInfoCards(uiState: UiState) {
                 ) {
                     if (showCharLength) {
                         InfoCard(
-                            text = stringResource(
+                            text =
+                            stringResource(
                                 R.string.feature_randomfact_characters_suffix,
                                 uiState.factLength
                             ),
-                            cardType = if (showMultipleCats) InfoCardType.DoubleFirst else InfoCardType.Single
+                            cardType = if (showMultipleCats) {
+                                InfoCardType.DoubleFirst
+                            } else {
+                                InfoCardType.Single
+                            }
                         )
                     }
                     if (showMultipleCats) {
                         InfoCard(
                             text = stringResource(R.string.feature_randomfact_multiple_cats),
-                            cardType = if (showCharLength) InfoCardType.DoubleSecond else InfoCardType.Single,
+                            cardType = if (showCharLength) {
+                                InfoCardType.DoubleSecond
+                            } else {
+                                InfoCardType.Single
+                            },
                             textColor = MaterialTheme.colorScheme.primary
                         )
                     }
@@ -70,7 +80,9 @@ internal fun FactInfoCards(uiState: UiState) {
 
 sealed class InfoCardType {
     data object Single : InfoCardType()
+
     data object DoubleFirst : InfoCardType()
+
     data object DoubleSecond : InfoCardType()
 }
 
@@ -81,12 +93,18 @@ private fun InfoCard(
     textColor: Color = MaterialTheme.colorScheme.onSurface
 ) {
     Card(
-        modifier = Modifier
+        modifier =
+        Modifier
             .infoCardWidth(cardType)
             .infoCardPadding(cardType),
-        shape = RoundedCornerShape(dimensionResource(R.dimen.feature_randomfact_info_card_corner_radius)),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = dimensionResource(R.dimen.feature_randomfact_info_card_elevation)
+        shape = RoundedCornerShape(
+            dimensionResource(R.dimen.feature_randomfact_info_card_corner_radius)
+        ),
+        elevation =
+        CardDefaults.cardElevation(
+            defaultElevation = dimensionResource(
+                R.dimen.feature_randomfact_info_card_elevation
+            )
         )
     ) {
         Box(
@@ -95,8 +113,11 @@ private fun InfoCard(
         ) {
             Text(
                 text = text,
-                modifier = Modifier
-                    .padding(dimensionResource(jp.speakbuddy.edisonandroidexercise.core.designsystem.R.dimen.core_designsystem_padding_small))
+                modifier =
+                Modifier
+                    .padding(
+                        dimensionResource(DesignR.dimen.core_designsystem_padding_small)
+                    )
                     .fillMaxWidth(),
                 style = MaterialTheme.typography.bodyMedium,
                 color = textColor,
@@ -110,7 +131,10 @@ private fun InfoCard(
 private fun Modifier.infoCardWidth(cardType: InfoCardType): Modifier {
     return this.then(
         when (cardType) {
-            is InfoCardType.Single -> this.width(dimensionResource(R.dimen.feature_randomfact_info_card_width_single))
+            is InfoCardType.Single -> this.width(
+                dimensionResource(R.dimen.feature_randomfact_info_card_width_single)
+            )
+
             is InfoCardType.DoubleFirst,
             is InfoCardType.DoubleSecond ->
                 this.width(dimensionResource(R.dimen.feature_randomfact_info_card_width_double))
@@ -122,17 +146,23 @@ private fun Modifier.infoCardWidth(cardType: InfoCardType): Modifier {
 private fun Modifier.infoCardPadding(cardType: InfoCardType): Modifier {
     return this.then(
         this.padding(
-            start = when (cardType) {
+            start =
+            when (cardType) {
                 is InfoCardType.Single,
-                is InfoCardType.DoubleFirst -> dimensionResource(jp.speakbuddy.edisonandroidexercise.core.designsystem.R.dimen.core_designsystem_padding_zero)
+                is InfoCardType.DoubleFirst ->
+                    dimensionResource(DesignR.dimen.core_designsystem_padding_zero)
 
-                is InfoCardType.DoubleSecond -> dimensionResource(jp.speakbuddy.edisonandroidexercise.core.designsystem.R.dimen.core_designsystem_padding_small)
+                is InfoCardType.DoubleSecond ->
+                    dimensionResource(DesignR.dimen.core_designsystem_padding_small)
             },
-            end = when (cardType) {
+            end =
+            when (cardType) {
                 is InfoCardType.Single,
-                is InfoCardType.DoubleSecond -> dimensionResource(jp.speakbuddy.edisonandroidexercise.core.designsystem.R.dimen.core_designsystem_padding_zero)
+                is InfoCardType.DoubleSecond ->
+                    dimensionResource(DesignR.dimen.core_designsystem_padding_zero)
 
-                is InfoCardType.DoubleFirst -> dimensionResource(jp.speakbuddy.edisonandroidexercise.core.designsystem.R.dimen.core_designsystem_padding_small)
+                is InfoCardType.DoubleFirst ->
+                    dimensionResource(DesignR.dimen.core_designsystem_padding_small)
             }
         )
     )
@@ -143,11 +173,12 @@ private fun Modifier.infoCardPadding(cardType: InfoCardType): Modifier {
 fun PreviewFactInfoCardsOnlyCharLength() {
     EdisonAndroidExerciseTheme {
         FactInfoCards(
-            uiState = UiState.Success(
+            uiState =
+            UiState.Success(
                 fact = "This is a long fact about cat only with a lot of characters",
                 factLength = 105,
                 containsMultipleCats = false,
-                isFavorite = false,
+                isFavorite = false
             )
         )
     }
@@ -158,11 +189,12 @@ fun PreviewFactInfoCardsOnlyCharLength() {
 fun PreviewFactInfoCardsOnlyMultipleCats() {
     EdisonAndroidExerciseTheme {
         FactInfoCards(
-            uiState = UiState.Success(
+            uiState =
+            UiState.Success(
                 fact = "This is a short fact about multiple cats",
                 factLength = 30,
                 containsMultipleCats = true,
-                isFavorite = false,
+                isFavorite = false
             )
         )
     }
@@ -173,11 +205,12 @@ fun PreviewFactInfoCardsOnlyMultipleCats() {
 fun PreviewFactInfoCardsBoth() {
     EdisonAndroidExerciseTheme {
         FactInfoCards(
-            uiState = UiState.Success(
-                fact = "This is a long fact about multiple cats where the fact is longer than the fact about cats",
+            uiState =
+            UiState.Success(
+                fact = "This is a long fact about multiple cats where the fact is longer",
                 factLength = 105,
                 containsMultipleCats = true,
-                isFavorite = false,
+                isFavorite = false
             )
         )
     }
@@ -188,11 +221,12 @@ fun PreviewFactInfoCardsBoth() {
 fun PreviewFactInfoCardsNeither() {
     EdisonAndroidExerciseTheme {
         FactInfoCards(
-            uiState = UiState.Success(
+            uiState =
+            UiState.Success(
                 fact = "This is a short fact about cat",
                 factLength = 30,
                 containsMultipleCats = false,
-                isFavorite = false,
+                isFavorite = false
             )
         )
     }

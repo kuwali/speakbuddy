@@ -20,7 +20,6 @@ import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
 
 class FactRepositoryImplTest {
-
     private lateinit var factRepositoryImpl: FactRepositoryImpl
     private val favoriteFactsPagingSource: FavoriteFactsPagingSource = mock()
     private val networkDataSource: FactNetworkDataSource = mock()

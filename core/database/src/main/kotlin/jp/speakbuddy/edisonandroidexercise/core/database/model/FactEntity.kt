@@ -11,4 +11,3 @@ data class FactEntity(
     @ColumnInfo(name = "length") val length: Int,
     @ColumnInfo(name = "is_favorite") val isFavorite: Boolean = false
 )
-

@@ -12,7 +12,6 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 
 class GetFactUseCaseTest {
-
     private val repository: FactRepository = mock()
     private lateinit var useCase: GetFactUseCase
 

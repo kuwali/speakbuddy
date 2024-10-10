@@ -15,11 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 import jp.speakbuddy.edisonandroidexercise.feature.randomfact.ui.view.FactContent
 import jp.speakbuddy.edisonandroidexercise.feature.randomfact.ui.view.FactInfoCards
 import jp.speakbuddy.edisonandroidexercise.feature.randomfact.ui.view.LoadingOverlay
 import jp.speakbuddy.edisonandroidexercise.feature.randomfact.ui.view.UpdateButton
-import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 
 /**
  * Composable function that displays the Random Fact screen.
@@ -30,9 +30,7 @@ import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
  * @param viewModel The ViewModel that manages the UI state and business logic for this screen.
  */
 @Composable
-fun RandomFactScreen(
-    viewModel: RandomFactViewModel = hiltViewModel()
-) {
+fun RandomFactScreen(viewModel: RandomFactViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
@@ -40,7 +38,8 @@ fun RandomFactScreen(
     }
 
     Box(
-        modifier = Modifier
+        modifier =
+        Modifier
             .fillMaxSize()
             .padding(dimensionResource(DesignR.dimen.core_designsystem_padding_default))
     ) {
@@ -53,7 +52,11 @@ fun RandomFactScreen(
                 uiState = uiState,
                 onToggleFavorite = { viewModel.toggleFavorite() }
             )
-            Spacer(modifier = Modifier.height(dimensionResource(DesignR.dimen.core_designsystem_padding_default)))
+            Spacer(
+                modifier = Modifier.height(
+                    dimensionResource(DesignR.dimen.core_designsystem_padding_default)
+                )
+            )
             FactInfoCards(uiState)
         }
 

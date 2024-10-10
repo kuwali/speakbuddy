@@ -7,21 +7,18 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import jp.speakbuddy.edisonandroidexercise.core.database.FactDatabase
 import javax.inject.Singleton
+import jp.speakbuddy.edisonandroidexercise.core.database.FactDatabase
 
 @Module
 @InstallIn(SingletonComponent::class)
 internal object FactDatabaseModule {
-
     @Provides
     @Singleton
-    fun providesFactDatabase(
-        @ApplicationContext context: Context,
-    ): FactDatabase = Room.databaseBuilder(
-        context,
-        FactDatabase::class.java,
-        "fact-database",
-    ).build()
-
+    fun providesFactDatabase(@ApplicationContext context: Context): FactDatabase =
+        Room.databaseBuilder(
+            context,
+            FactDatabase::class.java,
+            "fact-database"
+        ).build()
 }

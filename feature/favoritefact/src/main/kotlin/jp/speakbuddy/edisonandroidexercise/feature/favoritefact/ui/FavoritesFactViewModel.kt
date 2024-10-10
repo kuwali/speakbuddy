@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import jp.speakbuddy.edisonandroidexercise.core.common.network.Dispatcher
 import jp.speakbuddy.edisonandroidexercise.core.common.network.SBDispatchers
 import jp.speakbuddy.edisonandroidexercise.core.domain.usecase.GetFavoriteFactsUseCase
@@ -17,7 +18,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.jetbrains.annotations.VisibleForTesting
-import javax.inject.Inject
 
 private const val TOGGLE_ANIMATION_DELAY = 300L
 
@@ -32,12 +32,13 @@ private const val TOGGLE_ANIMATION_DELAY = 300L
  * @property dispatcher Coroutine dispatcher for IO operations.
  */
 @HiltViewModel
-class FavoritesFactViewModel @Inject constructor(
+class FavoritesFactViewModel
+@Inject
+constructor(
     private val getFavoriteFactsUseCase: GetFavoriteFactsUseCase,
     private val toggleFavoriteUseCase: ToggleFavoriteUseCase,
-    @Dispatcher(SBDispatchers.IO) private val dispatcher: CoroutineDispatcher,
+    @Dispatcher(SBDispatchers.IO) private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
-
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
@@ -116,6 +117,8 @@ class FavoritesFactViewModel @Inject constructor(
 
 sealed class UiState {
     data object Loading : UiState()
+
     data object Success : UiState()
+
     data class Error(val message: String) : UiState()
 }

@@ -26,7 +26,6 @@ import org.junit.runner.RunWith
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 class RandomFactScreenTest {
-
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
 
@@ -43,11 +42,12 @@ class RandomFactScreenTest {
     fun setup() {
         hiltRule.inject()
 
-        viewModel = RandomFactViewModel(
-            getFactUseCase = getFactUseCase,
-            toggleFavoriteUseCase = toggleFavoriteUseCase,
-            dispatcher = testDispatcher,
-        )
+        viewModel =
+            RandomFactViewModel(
+                getFactUseCase = getFactUseCase,
+                toggleFavoriteUseCase = toggleFavoriteUseCase,
+                dispatcher = testDispatcher
+            )
 
         composeTestRule.setContent {
             RandomFactScreen(viewModel = viewModel)

@@ -12,7 +12,7 @@ android {
     }
 
     defaultConfig {
-        buildConfigField("String" , "API_URL", "\"https://catfact.ninja/\"")
+        buildConfigField("String", "API_URL", "\"https://catfact.ninja/\"")
     }
 }
 

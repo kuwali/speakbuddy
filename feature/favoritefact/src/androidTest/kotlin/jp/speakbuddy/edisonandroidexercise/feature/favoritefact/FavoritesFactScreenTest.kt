@@ -13,16 +13,15 @@ import jp.speakbuddy.edisonandroidexercise.feature.favoritefact.fake.FakeToggleF
 import jp.speakbuddy.edisonandroidexercise.feature.favoritefact.ui.FavoritesFactScreen
 import jp.speakbuddy.edisonandroidexercise.feature.favoritefact.ui.FavoritesFactViewModel
 import jp.speakbuddy.edisonandroidexercise.feature.favoritefact.ui.UiState
+import kotlin.test.Test
 import kotlinx.coroutines.test.StandardTestDispatcher
 import org.junit.Before
 import org.junit.Rule
 import org.junit.runner.RunWith
-import kotlin.test.Test
 
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 class FavoritesFactScreenTest {
-
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
 
@@ -39,11 +38,12 @@ class FavoritesFactScreenTest {
     fun setup() {
         hiltRule.inject()
 
-        viewModel = FavoritesFactViewModel(
-            getFavoriteFactsUseCase = getFavoriteFactsUseCase,
-            toggleFavoriteUseCase = toggleFavoriteUseCase,
-            dispatcher = testDispatcher,
-        )
+        viewModel =
+            FavoritesFactViewModel(
+                getFavoriteFactsUseCase = getFavoriteFactsUseCase,
+                toggleFavoriteUseCase = toggleFavoriteUseCase,
+                dispatcher = testDispatcher
+            )
 
         composeTestRule.setContent {
             FavoritesFactScreen(viewModel = viewModel)
@@ -58,7 +58,6 @@ class FavoritesFactScreenTest {
         // Then
         composeTestRule.onNodeWithTag("loading_tag").assertIsDisplayed()
     }
-
 
     @Test
     fun errorState_isDisplayed_onError() {

@@ -10,9 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.EdisonAndroidExerciseTheme
 import jp.speakbuddy.edisonandroidexercise.feature.randomfact.R
-import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 
 @Composable
 internal fun UpdateButton(
@@ -23,10 +23,15 @@ internal fun UpdateButton(
     Button(
         onClick = onUpdateClick,
         enabled = enabled,
-        modifier = modifier
+        modifier =
+        modifier
             .fillMaxWidth()
-            .padding(vertical = dimensionResource(DesignR.dimen.core_designsystem_padding_default)),
-        shape = RoundedCornerShape(dimensionResource(R.dimen.feature_randomfact_button_corner_radius))
+            .padding(
+                vertical = dimensionResource(DesignR.dimen.core_designsystem_padding_default)
+            ),
+        shape = RoundedCornerShape(
+            dimensionResource(R.dimen.feature_randomfact_button_corner_radius)
+        )
     ) {
         Text(stringResource(R.string.feature_randomfact_get_new_fact))
     }

@@ -39,7 +39,8 @@ fun FactScreen() {
         topBar = { FactScreenTopAppBar() }
     ) { paddingValues ->
         Column(
-            modifier = Modifier
+            modifier =
+            Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
@@ -49,7 +50,13 @@ fun FactScreen() {
                 tabs.forEachIndexed { index, tabInfo ->
                     FactTab(
                         selected = pagerState.currentPage == index,
-                        onClick = { coroutineScope.launch { pagerState.animateScrollToPage(index) } },
+                        onClick = {
+                            coroutineScope.launch {
+                                pagerState.animateScrollToPage(
+                                    index
+                                )
+                            }
+                        },
                         titleRes = tabInfo.titleRes
                     )
                 }
@@ -57,7 +64,8 @@ fun FactScreen() {
 
             HorizontalPager(
                 state = pagerState,
-                modifier = Modifier
+                modifier =
+                Modifier
                     .weight(1f)
                     .semantics { contentDescription = PAGER_CONTENT_DESCRIPTION }
             ) { page ->
@@ -68,31 +76,29 @@ fun FactScreen() {
 }
 
 @Composable
-private fun FactTab(
-    selected: Boolean,
-    onClick: () -> Unit,
-    titleRes: Int
-) {
+private fun FactTab(selected: Boolean, onClick: () -> Unit, titleRes: Int) {
     Tab(
         selected = selected,
         onClick = onClick,
-        text = { Text(stringResource(titleRes)) },
+        text = { Text(stringResource(titleRes)) }
     )
 }
 
 private data class TabInfo(val titleRes: Int, val screen: @Composable () -> Unit)
 
-private val tabs = listOf(
-    TabInfo(R.string.feature_fact_random_fact_title) { RandomFactScreen() },
-    TabInfo(R.string.feature_fact_favorites_title) { FavoritesFactScreen() }
-)
+private val tabs =
+    listOf(
+        TabInfo(R.string.feature_fact_random_fact_title) { RandomFactScreen() },
+        TabInfo(R.string.feature_fact_favorites_title) { FavoritesFactScreen() }
+    )
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun FactScreenTopAppBar() {
     TopAppBar(
         title = { Text(stringResource(R.string.feature_fact_cat_facts_title)) },
-        colors = TopAppBarDefaults.mediumTopAppBarColors(
+        colors =
+        TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
         )

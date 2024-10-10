@@ -9,31 +9,28 @@ import jp.speakbuddy.edisonandroidexercise.core.network.model.FactResponseDto
  *
  * @return A [FactEntity] with the fact and length from the [FactResponseDto].
  */
-fun FactResponseDto.toEntity(): FactEntity =
-    FactEntity(
-        fact = fact,
-        length = length,
-    )
+fun FactResponseDto.toEntity(): FactEntity = FactEntity(
+    fact = fact,
+    length = length
+)
 
 /**
  * Converts a [FactEntity] to a [Fact] model.
  *
  * @return A [Fact] with the fact, length, and favorite status from the [FactEntity].
  */
-fun FactEntity.toModel(): Fact =
-    Fact(
-        fact = fact,
-        length = length,
-        isFavorite = isFavorite,
-    )
+fun FactEntity.toModel(): Fact = Fact(
+    fact = fact,
+    length = length,
+    isFavorite = isFavorite
+)
 
 /**
  * Converts a [FactResponseDto] to a [Fact] model.
  *
  * @return A [Fact] with the fact and length from the [FactResponseDto].
  */
-fun FactResponseDto.toModel(): Fact =
-    Fact(
-        fact = fact,
-        length = length,
-    )
+fun FactResponseDto.toModel(): Fact = Fact(
+    fact = fact,
+    length = length
+)

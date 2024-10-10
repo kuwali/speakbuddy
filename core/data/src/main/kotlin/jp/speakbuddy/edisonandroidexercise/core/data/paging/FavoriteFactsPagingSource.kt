@@ -2,18 +2,19 @@ package jp.speakbuddy.edisonandroidexercise.core.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import javax.inject.Inject
+import javax.inject.Singleton
 import jp.speakbuddy.edisonandroidexercise.core.data.model.toModel
 import jp.speakbuddy.edisonandroidexercise.core.database.dao.FactDao
 import jp.speakbuddy.edisonandroidexercise.core.model.Fact
 import kotlinx.coroutines.flow.first
-import javax.inject.Inject
-import javax.inject.Singleton
 
 @Singleton
-class FavoriteFactsPagingSource @Inject constructor(
+class FavoriteFactsPagingSource
+@Inject
+constructor(
     private val factDao: FactDao
 ) : PagingSource<Int, Fact>() {
-
     companion object {
         private const val INITIAL_PAGE = 0
     }

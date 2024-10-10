@@ -14,9 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.EdisonAndroidExerciseTheme
 import jp.speakbuddy.edisonandroidexercise.feature.favoritefact.R
-import jp.speakbuddy.edisonandroidexercise.core.designsystem.R as DesignR
 
 @Composable
 fun ErrorState(errorMessage: String, onRetry: () -> Unit) {
@@ -30,7 +30,11 @@ fun ErrorState(errorMessage: String, onRetry: () -> Unit) {
             color = MaterialTheme.colorScheme.error,
             style = MaterialTheme.typography.bodyLarge
         )
-        Spacer(modifier = Modifier.height(dimensionResource(DesignR.dimen.core_designsystem_padding_default)))
+        Spacer(
+            modifier = Modifier.height(
+                dimensionResource(DesignR.dimen.core_designsystem_padding_default)
+            )
+        )
         Button(onClick = onRetry) {
             Text(stringResource(R.string.feature_favoritefact_retry))
         }

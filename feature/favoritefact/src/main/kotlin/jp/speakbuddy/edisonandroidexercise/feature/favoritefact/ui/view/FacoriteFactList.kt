@@ -30,8 +30,12 @@ internal fun FavoriteFactsList(
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(dimensionResource(R.dimen.core_designsystem_padding_default)),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.core_designsystem_padding_default))
+        contentPadding = PaddingValues(
+            dimensionResource(R.dimen.core_designsystem_padding_default)
+        ),
+        verticalArrangement = Arrangement.spacedBy(
+            dimensionResource(R.dimen.core_designsystem_padding_default)
+        )
     ) {
         items(
             count = favoriteFacts.itemCount,
@@ -40,8 +44,11 @@ internal fun FavoriteFactsList(
             favoriteFacts[index]?.let { fact ->
                 AnimatedVisibility(
                     visible = !animatingItems.contains(fact.fact),
-                    exit = shrinkVertically(animationSpec = tween(durationMillis = ANIMATION_DURATION_MILLIS)) +
-                            fadeOut(animationSpec = tween(durationMillis = ANIMATION_DURATION_MILLIS))
+                    exit = shrinkVertically(
+                        animationSpec = tween(durationMillis = ANIMATION_DURATION_MILLIS)
+                    ) + fadeOut(
+                        animationSpec = tween(durationMillis = ANIMATION_DURATION_MILLIS)
+                    )
                 ) {
                     FavoriteFactCard(
                         fact = fact,
@@ -56,23 +63,24 @@ internal fun FavoriteFactsList(
 @Preview(showBackground = true)
 @Composable
 fun FavoriteFactsListPreview() {
-    val sampleFacts = listOf(
-        Fact(
-            fact = "The platypus, a semiaquatic egg-laying mammal, doesn't have a stomach.",
-            length = 69,
-            isFavorite = true
-        ),
-        Fact(
-            fact = "A group of flamingos is called a 'flamboyance'.",
-            length = 48,
-            isFavorite = true
-        ),
-        Fact(
-            fact = "Honeybees can recognize human faces.",
-            length = 37,
-            isFavorite = true
+    val sampleFacts =
+        listOf(
+            Fact(
+                fact = "The platypus, a semiaquatic egg-laying mammal, doesn't have a stomach.",
+                length = 69,
+                isFavorite = true
+            ),
+            Fact(
+                fact = "A group of flamingos is called a 'flamboyance'.",
+                length = 48,
+                isFavorite = true
+            ),
+            Fact(
+                fact = "Honeybees can recognize human faces.",
+                length = 37,
+                isFavorite = true
+            )
         )
-    )
 
     val fakePagingItems = flowOf(PagingData.from(sampleFacts)).collectAsLazyPagingItems()
 

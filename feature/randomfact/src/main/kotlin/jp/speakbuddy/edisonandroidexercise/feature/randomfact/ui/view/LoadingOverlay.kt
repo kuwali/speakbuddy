@@ -24,7 +24,8 @@ internal fun LoadingOverlay(isVisible: Boolean) {
         exit = fadeOut()
     ) {
         Box(
-            modifier = Modifier
+            modifier =
+            Modifier
                 .fillMaxSize()
                 .padding(dimensionResource(R.dimen.core_designsystem_padding_default)),
             contentAlignment = Alignment.Center

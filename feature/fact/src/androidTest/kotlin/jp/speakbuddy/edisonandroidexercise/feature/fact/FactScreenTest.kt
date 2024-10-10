@@ -9,15 +9,14 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import jp.speakbuddy.edisonandroidexercise.core.uitesting.HiltTestingComponentActivity
+import kotlin.test.Test
 import org.junit.Before
 import org.junit.Rule
 import org.junit.runner.RunWith
-import kotlin.test.Test
 
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 class FactScreenTest {
-
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
 

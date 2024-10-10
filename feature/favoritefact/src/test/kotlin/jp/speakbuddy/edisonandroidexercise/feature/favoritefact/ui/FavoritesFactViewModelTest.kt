@@ -1,6 +1,7 @@
 package jp.speakbuddy.edisonandroidexercise.feature.favoritefact.ui
 
 import androidx.paging.PagingData
+import java.util.stream.Stream
 import jp.speakbuddy.edisonandroidexercise.core.domain.usecase.GetFavoriteFactsUseCase
 import jp.speakbuddy.edisonandroidexercise.core.domain.usecase.ToggleFavoriteUseCase
 import jp.speakbuddy.edisonandroidexercise.core.model.Fact
@@ -25,12 +26,10 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
 import org.mockito.junit.jupiter.MockitoExtension
-import java.util.stream.Stream
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @ExtendWith(MockitoExtension::class)
 class FavoritesFactViewModelTest {
-
     private val getFavoriteFactsUseCase: GetFavoriteFactsUseCase = mock()
     private val toggleFavoriteUseCase: ToggleFavoriteUseCase = mock()
     private val testDispatcher = StandardTestDispatcher()
@@ -41,11 +40,12 @@ class FavoritesFactViewModelTest {
     fun setup() {
         Dispatchers.setMain(testDispatcher)
 
-        viewModel = FavoritesFactViewModel(
-            getFavoriteFactsUseCase = getFavoriteFactsUseCase,
-            toggleFavoriteUseCase = toggleFavoriteUseCase,
-            dispatcher = testDispatcher,
-        )
+        viewModel =
+            FavoritesFactViewModel(
+                getFavoriteFactsUseCase = getFavoriteFactsUseCase,
+                toggleFavoriteUseCase = toggleFavoriteUseCase,
+                dispatcher = testDispatcher
+            )
     }
 
     @AfterEach
@@ -64,26 +64,30 @@ class FavoritesFactViewModelTest {
 
     @ParameterizedTest
     @MethodSource("provideSuccessTestData")
-    fun `when loadFavoriteFacts succeeds, uiState should be updated to Success`(facts: List<Fact>) = runTest {
-        // Given
-        val pagingData = PagingData.from(facts)
-        `when`(getFavoriteFactsUseCase()).thenReturn(flowOf(pagingData))
+    fun `when loadFavoriteFacts succeeds, uiState should be updated to Success`(facts: List<Fact>) =
+        runTest {
+            // Given
+            val pagingData = PagingData.from(facts)
+            `when`(getFavoriteFactsUseCase()).thenReturn(flowOf(pagingData))
 
-        // When
-        viewModel.initialize()
-        advanceUntilIdle()
+            // When
+            viewModel.initialize()
+            advanceUntilIdle()
 
-        // Then
-        val finalState = viewModel.uiState.first()
-        Assertions.assertTrue(finalState is UiState.Success)
-        val favoriteFacts = viewModel.favoriteFacts.first()
-        Assertions.assertNotNull(favoriteFacts)
-        Assertions.assertTrue(favoriteFacts != PagingData.empty<Fact>())
-    }
+            // Then
+            val finalState = viewModel.uiState.first()
+            Assertions.assertTrue(finalState is UiState.Success)
+            val favoriteFacts = viewModel.favoriteFacts.first()
+            Assertions.assertNotNull(favoriteFacts)
+            Assertions.assertTrue(favoriteFacts != PagingData.empty<Fact>())
+        }
 
     @ParameterizedTest
     @MethodSource("provideErrorTestData")
-    fun `when loadFavoriteFacts fails, uiState should be updated to Error`(error: Throwable, expectedMessage: String) = runTest {
+    fun `when loadFavoriteFacts fails, uiState should be updated to Error`(
+        error: Throwable,
+        expectedMessage: String
+    ) = runTest {
         // Given
         `when`(getFavoriteFactsUseCase()).thenThrow(error)
 
@@ -141,8 +145,14 @@ class FavoritesFactViewModelTest {
 
         @JvmStatic
         fun provideErrorTestData() = Stream.of(
-            Arguments.of(RuntimeException("Test error"), "Failed to load favorite facts: Test error"),
-            Arguments.of(IllegalStateException("Another error"), "Failed to load favorite facts: Another error")
+            Arguments.of(
+                RuntimeException("Test error"),
+                "Failed to load favorite facts: Test error"
+            ),
+            Arguments.of(
+                IllegalStateException("Another error"),
+                "Failed to load favorite facts: Another error"
+            )
         )
     }
 }

@@ -14,11 +14,8 @@ import jp.speakbuddy.edisonandroidexercise.core.domain.usecase.ToggleFavoriteUse
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class FactDomainModule {
-
     @Binds
-    abstract fun bindGetFactUseCase(
-        getFactUseCaseImpl: GetFactUseCaseImpl
-    ): GetFactUseCase
+    abstract fun bindGetFactUseCase(getFactUseCaseImpl: GetFactUseCaseImpl): GetFactUseCase
 
     @Binds
     abstract fun bindToggleFavoriteUseCase(

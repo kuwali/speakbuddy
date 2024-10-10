@@ -3,6 +3,7 @@ package jp.speakbuddy.edisonandroidexercise.feature.randomfact.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import jp.speakbuddy.edisonandroidexercise.core.common.network.Dispatcher
 import jp.speakbuddy.edisonandroidexercise.core.common.network.SBDispatchers
 import jp.speakbuddy.edisonandroidexercise.core.domain.usecase.GetFactUseCase
@@ -14,7 +15,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.jetbrains.annotations.VisibleForTesting
-import javax.inject.Inject
 
 /**
  * ViewModel for managing random cat facts.
@@ -28,12 +28,13 @@ import javax.inject.Inject
  * @property dispatcher Coroutine dispatcher for IO operations
  */
 @HiltViewModel
-class RandomFactViewModel @Inject constructor(
+class RandomFactViewModel
+@Inject
+constructor(
     private val getFactUseCase: GetFactUseCase,
     private val toggleFavoriteUseCase: ToggleFavoriteUseCase,
-    @Dispatcher(SBDispatchers.IO) private val dispatcher: CoroutineDispatcher,
+    @Dispatcher(SBDispatchers.IO) private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
-
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
@@ -73,12 +74,13 @@ class RandomFactViewModel @Inject constructor(
      */
     private fun updateUiState() {
         currentFact?.let { fact ->
-            _uiState.value = UiState.Success(
-                fact = fact.fact,
-                factLength = fact.length,
-                containsMultipleCats = fact.fact.contains("cats", ignoreCase = true),
-                isFavorite = fact.isFavorite,
-            )
+            _uiState.value =
+                UiState.Success(
+                    fact = fact.fact,
+                    factLength = fact.length,
+                    containsMultipleCats = fact.fact.contains("cats", ignoreCase = true),
+                    isFavorite = fact.isFavorite
+                )
         }
     }
 
@@ -114,6 +116,7 @@ class RandomFactViewModel @Inject constructor(
 
 sealed class UiState {
     data object Loading : UiState()
+
     data class Success(
         val fact: String,
         val factLength: Int,

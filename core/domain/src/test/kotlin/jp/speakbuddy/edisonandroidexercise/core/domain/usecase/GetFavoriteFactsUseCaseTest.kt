@@ -13,7 +13,6 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 
 class GetFavoriteFactsUseCaseTest {
-
     private val repository: FactRepository = mock()
     private lateinit var useCase: GetFavoriteFactsUseCase
 
@@ -25,10 +24,13 @@ class GetFavoriteFactsUseCaseTest {
     @Test
     fun `invoke returns paging data of favorite facts from repository`() = runTest {
         // Given
-        val expectedFacts = PagingData.from(listOf(
-            Fact("Favorite fact 1", 1),
-            Fact("Favorite fact 2", 2)
-        ))
+        val expectedFacts =
+            PagingData.from(
+                listOf(
+                    Fact("Favorite fact 1", 1),
+                    Fact("Favorite fact 2", 2)
+                )
+            )
         `when`(repository.getFavoriteFacts()).thenReturn(flowOf(expectedFacts))
 
         // When

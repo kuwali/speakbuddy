@@ -29,9 +29,7 @@ import jp.speakbuddy.edisonandroidexercise.feature.favoritefact.ui.view.Favorite
  * @param viewModel The ViewModel that provides data and handles business logic for this screen.
  */
 @Composable
-fun FavoritesFactScreen(
-    viewModel: FavoritesFactViewModel = hiltViewModel()
-) {
+fun FavoritesFactScreen(viewModel: FavoritesFactViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val favoriteFacts = viewModel.favoriteFacts.collectAsLazyPagingItems()
     val animatingItems by remember { viewModel.animatingItems }.collectAsState()
@@ -43,7 +41,8 @@ fun FavoritesFactScreen(
     when (uiState) {
         is UiState.Loading -> {
             CircularProgressIndicator(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .fillMaxSize()
                     .wrapContentSize(Alignment.Center)
                     .testTag(stringResource(R.string.feature_favoritefact_loading_tag))

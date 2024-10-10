@@ -9,5 +9,5 @@ annotation class Dispatcher(val sbDispatcher: SBDispatchers)
 
 enum class SBDispatchers {
     Default,
-    IO,
+    IO
 }

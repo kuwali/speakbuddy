@@ -32,11 +32,20 @@ import jp.speakbuddy.edisonandroidexercise.feature.randomfact.ui.UiState
 internal fun FactContent(uiState: UiState, onToggleFavorite: () -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(dimensionResource(R.dimen.feature_randomfact_card_corner_radius)),
-        elevation = CardDefaults.cardElevation(defaultElevation = dimensionResource(R.dimen.feature_randomfact_card_elevation))
+        shape = RoundedCornerShape(
+            dimensionResource(R.dimen.feature_randomfact_card_corner_radius)
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = dimensionResource(R.dimen.feature_randomfact_card_elevation)
+        )
     ) {
         Box(
-            modifier = Modifier.padding(dimensionResource(jp.speakbuddy.edisonandroidexercise.core.designsystem.R.dimen.core_designsystem_padding_default)),
+            modifier =
+            Modifier.padding(
+                dimensionResource(
+                    jp.speakbuddy.edisonandroidexercise.core.designsystem.R.dimen.core_designsystem_padding_default
+                )
+            ),
             contentAlignment = Alignment.Center
         ) {
             when (uiState) {
@@ -52,7 +61,14 @@ internal fun FactContent(uiState: UiState, onToggleFavorite: () -> Unit) {
                             textAlign = TextAlign.Center
                         )
 
-                        Spacer(modifier = Modifier.height(dimensionResource(jp.speakbuddy.edisonandroidexercise.core.designsystem.R.dimen.core_designsystem_padding_small)))
+                        Spacer(
+                            modifier =
+                            Modifier.height(
+                                dimensionResource(
+                                    jp.speakbuddy.edisonandroidexercise.core.designsystem.R.dimen.core_designsystem_padding_small
+                                )
+                            )
+                        )
 
                         FavoriteButton(
                             isFavorite = uiState.isFavorite,
@@ -61,10 +77,11 @@ internal fun FactContent(uiState: UiState, onToggleFavorite: () -> Unit) {
                     }
                 }
 
-                is UiState.Loading -> Text(
-                    stringResource(R.string.feature_randomfact_loading),
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                is UiState.Loading ->
+                    Text(
+                        stringResource(R.string.feature_randomfact_loading),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
             }
         }
     }
@@ -75,7 +92,8 @@ private fun FavoriteButton(isFavorite: Boolean, onToggleFavorite: () -> Unit) {
     IconButton(onClick = onToggleFavorite) {
         Icon(
             imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-            contentDescription = if (isFavorite) {
+            contentDescription =
+            if (isFavorite) {
                 stringResource(R.string.feature_randomfact_remove_from_favorites)
             } else {
                 stringResource(R.string.feature_randomfact_add_to_favorites)
@@ -100,11 +118,12 @@ private fun ErrorMessage(error: String) {
 fun FactContentSuccessNotFavoritePreview() {
     EdisonAndroidExerciseTheme {
         FactContent(
-            uiState = UiState.Success(
+            uiState =
+            UiState.Success(
                 fact = "The shortest war in history lasted 38 minutes.",
                 factLength = 43,
                 isFavorite = false,
-                containsMultipleCats = false,
+                containsMultipleCats = false
             ),
             onToggleFavorite = {}
         )
@@ -116,11 +135,12 @@ fun FactContentSuccessNotFavoritePreview() {
 fun FactContentSuccessFavoritePreview() {
     EdisonAndroidExerciseTheme {
         FactContent(
-            uiState = UiState.Success(
+            uiState =
+            UiState.Success(
                 fact = "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible.",
                 factLength = 43,
                 isFavorite = true,
-                containsMultipleCats = false,
+                containsMultipleCats = false
             ),
             onToggleFavorite = {}
         )
