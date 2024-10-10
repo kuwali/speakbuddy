@@ -1,4 +1,6 @@
 pluginManagement {
+    includeBuild("build-logic")
+
     repositories {
         google()
         mavenCentral()
@@ -12,6 +14,9 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "edison_android_exercise"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(":app")
