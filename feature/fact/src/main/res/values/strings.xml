@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_fact_cat_facts_title">Cat Facts</string>
+    <string name="feature_fact_random_fact_title">Random Fact</string>
+    <string name="feature_fact_favorites_title">Favorites</string>
+</resources>
