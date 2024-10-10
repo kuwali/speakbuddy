@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_favoritefact_no_favorites">No favorite facts yet</string>
+    <string name="feature_favoritefact_add_favorites_prompt">Add some facts to your favorites!</string>
+    <string name="feature_favoritefact_retry">Retry</string>
+    <string name="feature_favoritefact_unfavorite">Unfavorite</string>
+    <string name="feature_favoritefact_length_prefix">Length: %d</string>
+    <string name="feature_favoritefact_failed_load_favorite">Failed to load favorite facts: %s</string>
+    <string name="feature_favoritefact_loading_tag">loading_tag</string>
+</resources>
