@@ -7,10 +7,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import jp.speakbuddy.edisonandroidexercise.ui.fact.FactScreen
-import jp.speakbuddy.edisonandroidexercise.ui.fact.FactViewModel
-import jp.speakbuddy.edisonandroidexercise.ui.theme.EdisonAndroidExerciseTheme
+import dagger.hilt.android.AndroidEntryPoint
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.EdisonAndroidExerciseTheme
+import jp.speakbuddy.edisonandroidexercise.feature.fact.FactScreen
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    FactScreen(viewModel = FactViewModel())
+                    FactScreen()
                 }
             }
         }
