@@ -11,6 +11,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
                 apply("jp.speakbuddy.edisonandroidexercise.test")
+                apply( "org.jlleitschuh.gradle.ktlint")
             }
 
             extensions.configure<ApplicationExtension> {

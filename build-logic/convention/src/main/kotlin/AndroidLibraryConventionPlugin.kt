@@ -13,6 +13,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
                 apply("jp.speakbuddy.edisonandroidexercise.test")
+                apply( "org.jlleitschuh.gradle.ktlint")
             }
 
             extensions.configure<LibraryExtension> {
