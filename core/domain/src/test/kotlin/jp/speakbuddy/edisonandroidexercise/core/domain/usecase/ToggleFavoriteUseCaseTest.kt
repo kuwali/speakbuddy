@@ -14,7 +14,7 @@ class ToggleFavoriteUseCaseTest {
 
     @BeforeEach
     fun setup() {
-        useCase = ToggleFavoriteUseCase(repository)
+        useCase = ToggleFavoriteUseCaseImpl(repository)
     }
 
     @Test

@@ -17,7 +17,7 @@ class GetFactUseCaseTest {
 
     @BeforeEach
     fun setup() {
-        useCase = GetFactUseCase(repository)
+        useCase = GetFactUseCaseImpl(repository)
     }
 
     @Test

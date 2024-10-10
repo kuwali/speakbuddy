@@ -6,6 +6,7 @@ import jp.speakbuddy.edisonandroidexercise.core.domain.usecase.ToggleFavoriteUse
 import jp.speakbuddy.edisonandroidexercise.core.model.Fact
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
@@ -56,7 +57,7 @@ class RandomFactViewModelTest {
     fun `when loadFact succeeds, uiState should be updated to Success`() = runTest {
         // Given
         val testFact = Fact("Test fact about cats", 21)
-        doReturn(testFact).`when`(getFactUseCase).invoke(anyBoolean())
+        doReturn(flowOf(testFact)).`when`(getFactUseCase).invoke(anyBoolean())
 
         // When
         viewModel.updateFact()
@@ -92,7 +93,7 @@ class RandomFactViewModelTest {
     fun `when loadFact succeeds with single cat, containsMultipleCats should be false`() = runTest {
         // Given
         val testFact = Fact("Test fact about cat", 21)
-        doReturn(testFact).`when`(getFactUseCase).invoke(anyBoolean())
+        doReturn(flowOf(testFact)).`when`(getFactUseCase).invoke(anyBoolean())
 
         // When
         viewModel.updateFact()
@@ -127,7 +128,7 @@ class RandomFactViewModelTest {
     fun `when toggleFavorite is called, it should update the favorite status`() = runTest {
         // Given
         val initialFact = Fact("Test fact about cats", 21, isFavorite = false)
-        doReturn(initialFact).`when`(getFactUseCase).invoke(anyBoolean())
+        doReturn(flowOf(initialFact)).`when`(getFactUseCase).invoke(anyBoolean())
         viewModel.initialize()
 
         // When

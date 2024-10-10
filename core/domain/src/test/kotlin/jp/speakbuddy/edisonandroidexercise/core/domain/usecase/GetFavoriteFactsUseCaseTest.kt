@@ -18,7 +18,7 @@ class GetFavoriteFactsUseCaseTest {
 
     @BeforeEach
     fun setup() {
-        useCase = GetFavoriteFactsUseCase(repository)
+        useCase = GetFavoriteFactsUseCaseImpl(repository)
     }
 
     @Test
