@@ -1,4 +1,4 @@
-package jp.speakbuddy.edisonandroidexercise.ui.theme
+package jp.speakbuddy.edisonandroidexercise.core.designsystem.theme
 
 import android.app.Activity
 import android.os.Build
@@ -14,6 +14,13 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.Pink40
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.Pink80
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.Purple40
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.Purple80
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.PurpleGrey40
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.PurpleGrey80
+import jp.speakbuddy.edisonandroidexercise.core.designsystem.theme.Typography
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -49,6 +56,7 @@ fun EdisonAndroidExerciseTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
+
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
